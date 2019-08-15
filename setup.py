@@ -58,7 +58,8 @@ setup(
     author_email=AUTHOR_EMAIL,
     packages=[
         'crawlerdetect',
-        'crawlerdetect.providers',
+        'crawlerdetect.src',
+        'crawlerdetect.src.providers',
     ],
     package_dir={'crawlerdetect': 'crawlerdetect'},
     include_package_data=True,
