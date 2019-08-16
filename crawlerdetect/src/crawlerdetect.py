@@ -40,13 +40,18 @@ class CrawlerDetect(object):
             self.user_agent = user_agent
 
     def getUaHttpHeaders(self):
+        """
+        All possible HTTP headers that represent user agents
+        """
         return self.uaHttpHeaders.getAll()
 
     def compileRegex(self, patterns):
+        """
+        Combine regexps
+        """
         return '({})'.format('|'.join(patterns))
 
     def isCrawler(self, user_agent=None):
-
         if not user_agent:
             if self.user_agent:
                 user_agent = self.user_agent
