@@ -13,7 +13,7 @@ Run `pip install crawlerdetect`
 ```Python
 from crawlerdetect import CrawlerDetect
 crawler_detect = CrawlerDetect()
-res = crawler_detect.isCrawler('Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/webspider.htm)')
+crawler_detect.isCrawler('Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/webspider.htm)')
 # true if crawler user agent detected
 ```
 
@@ -39,6 +39,7 @@ crawler_detect = CrawlerDetect()
 crawler_detect.isCrawler('Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/webspider.htm)')
 # true if crawler user agent detected
 crawler_detect.getMatches()
+# Sosospider
 ```
 
 ### Contributing
