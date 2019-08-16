@@ -5,6 +5,7 @@ class Exclusions(AbstractProvider):
     """
     List of strings to remove from the user agent before running the crawler regex
     """
+
     def getAll(self):
         return [
             'Safari.[\d\.]*',

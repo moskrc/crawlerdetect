@@ -4,16 +4,6 @@
 
 It helps to detect  bots/crawlers/spiders via the user agent and other HTTP-headers. Currently able to detect 1,000's of bots/spiders/crawlers.
 
-### Why CrawlerDetect?
-Comparing with other popular bot-detection gems:
-
-|  | CrawlerDetect | Voight-Kampff | Browser  |
-|--|--|--|--|
-| Number of bot-patterns | >1000 | ~280 | ~280 |
-| Number of checked HTTP-headers | 10 | 1 | 1 |
-| Number of updates of bot-list *(1st half of 2018)* | 14 | 1 | 7 |
-
-
 ### Installation
 Run `pip install crawlerdetect`
 
@@ -23,7 +13,7 @@ Run `pip install crawlerdetect`
 ```Python
 from crawlerdetect import CrawlerDetect
 crawler_detect = CrawlerDetect()
-crawler_detect.isCrawler('Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/webspider.htm)'))
+res = crawler_detect.isCrawler('Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/webspider.htm)')
 # true if crawler user agent detected
 ```
 
@@ -46,7 +36,7 @@ crawler_detect.isCrawler()
 ```Python
 from crawlerdetect import CrawlerDetect
 crawler_detect = CrawlerDetect()
-crawler_detect.isCrawler('Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/webspider.htm)'))
+crawler_detect.isCrawler('Mozilla/5.0 (compatible; Sosospider/2.0; +http://help.soso.com/webspider.htm)')
 # true if crawler user agent detected
 crawler_detect.getMatches()
 ```

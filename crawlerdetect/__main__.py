@@ -1,6 +1,7 @@
-import configparser
-import sys
 import os
+import sys
+
+import configparser
 
 
 def get_crawlerdetect_version():

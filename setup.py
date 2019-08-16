@@ -52,8 +52,8 @@ setup(
         'Documentation': 'https://crawlerdetect.readthedocs.io',
     },
     description='CrawlerDetect is a Python class for detecting bots/crawlers/spiders via the user agent.',
-    #long_description=LONG_DESCRIPTION,
-    #long_description_content_type='text/markdown',
+    long_description=LONG_DESCRIPTION,
+    long_description_content_type='text/markdown',
     author=AUTHOR,
     author_email=AUTHOR_EMAIL,
     packages=[

@@ -6,6 +6,7 @@ from .providers import Headers
 
 
 class CrawlerDetect(object):
+
     def __init__(self, headers=None, user_agent=''):
         self.crawlers = Crawlers()
         self.exclusions = Exclusions()

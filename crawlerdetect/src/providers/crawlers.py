@@ -5,6 +5,7 @@ class Crawlers(AbstractProvider):
     """
     List of regular expressions to match against the user agent
     """
+
     def getAll(self):
         return [
             '.*Java.*outbrain',
