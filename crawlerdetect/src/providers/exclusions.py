@@ -55,5 +55,5 @@ class Exclusions(AbstractProvider):
             '; IDbot',
             '; ID bot',
             '; POWER BOT',
-            ';',  # Remove the following characters ;
+            'OCTOPUS-CORE',
         ]
