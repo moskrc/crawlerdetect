@@ -1,13 +1,10 @@
 import re
 
-from .providers import Exclusions
-from .providers import Crawlers
-from .providers import Headers
+from .providers import Crawlers, Exclusions, Headers
 
 
 class CrawlerDetect(object):
-
-    def __init__(self, headers=None, user_agent=''):
+    def __init__(self, headers=None, user_agent=""):
         self.crawlers = Crawlers()
         self.exclusions = Exclusions()
         self.uaHttpHeaders = Headers()
@@ -24,16 +21,16 @@ class CrawlerDetect(object):
 
         if http_headers:
             for k, v in http_headers.items():
-                if k.find('HTTP_') == 0:
+                if k.find("HTTP_") == 0:
                     self.httpHeaders[k] = v
 
     def setUserAgent(self, user_agent=None):
         if not user_agent:
-            ua = ''
+            ua = ""
 
             for altHeader in self.getUaHttpHeaders():
                 if altHeader in self.httpHeaders:
-                    ua += self.httpHeaders[altHeader] + ' '
+                    ua += self.httpHeaders[altHeader] + " "
 
             self.user_agent = ua
         else:
@@ -49,7 +46,7 @@ class CrawlerDetect(object):
         """
         Combine regexps
         """
-        return '({})'.format('|'.join(patterns))
+        return "({})".format("|".join(patterns))
 
     def isCrawler(self, user_agent=None):
         if not user_agent:
@@ -58,7 +55,7 @@ class CrawlerDetect(object):
             else:
                 return False
 
-        agent = re.sub(self.compiledExclusions, '', user_agent, flags=re.IGNORECASE)
+        agent = re.sub(self.compiledExclusions, "", user_agent, flags=re.IGNORECASE)
 
         if not agent:
             return False
