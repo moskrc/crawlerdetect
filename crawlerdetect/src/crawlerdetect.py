@@ -55,12 +55,12 @@ class CrawlerDetect(object):
             else:
                 return False
 
-        agent = re.sub(self.compiledExclusions, "", user_agent, flags=re.IGNORECASE)
+        agent = re.sub(rf"{self.compiledExclusions}", "", user_agent, flags=re.IGNORECASE)
 
         if not agent:
             return False
 
-        result = re.search(self.compiledRegex, agent, flags=re.IGNORECASE)
+        result = re.search(rf"{self.compiledRegex}", agent, flags=re.IGNORECASE)
 
         self.matches = []
 
