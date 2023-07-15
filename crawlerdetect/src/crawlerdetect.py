@@ -46,8 +46,8 @@ class CrawlerDetect(object):
         """
         Combine regexps
         """
-        escaped_patterns = [repr(pattern) for pattern in patterns]
-        return "({})".format("|".join(escaped_patterns))
+        raw_patterns = [r"({})".format(pattern) for pattern in patterns]
+        return "({})".format("|".join(raw_patterns))
 
     def isCrawler(self, user_agent=None):
         if not user_agent:
