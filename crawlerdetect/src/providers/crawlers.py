@@ -1388,7 +1388,7 @@ class Crawlers(AbstractProvider):
            r"Zao",
            r"Zauba",
            r"Zemanta Aggregator",
-           r"Zend\\\\Http\\\\Client",
+           r"Zend\\Http\\Client",
            r"Zend_Http_Client",
            r"Zermelo",
            r"Zeus ",
