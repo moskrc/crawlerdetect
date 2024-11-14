@@ -68,4 +68,19 @@ To use this library with Ruby on Rails or any Ruby-based application, check out 
 
 _Parts of this class are based on the brilliant [MobileDetect](https://github.com/serbanghita/Mobile-Detect)_
 
-[![Analytics](https://ga-beacon.appspot.com/UA-72430465-1/Crawler-Detect/readme?pixel)](https://github.com/JayBizzle/Crawler-Detect)
+### Development
+
+#### Setup
+```bash
+poetry install
+```
+
+#### Running tests
+```bash
+poetry run pytest
+```
+
+#### Bump version
+```bash
+poetry run bump-my-version bump [patch|minor|major]
+```

@@ -2,23 +2,15 @@ import json
 import os
 import re
 
-from crawlerdetect import CrawlerDetect, get_crawlerdetect_version, providers
+from base_case import CrawlerDetectTestCase
 
-from .base_case import CrawlerDetectTestCase
-
+from crawlerdetect import CrawlerDetect, providers
 
 with open(os.path.join(os.path.dirname(__file__), "fixtures/headers.json")) as f:
     test_headers = json.load(f)
 
 
 class CrawlerDetectTests(CrawlerDetectTestCase):
-    def test_get_crawlerdetect_version(self):
-        version = get_crawlerdetect_version()
-        version_parts = version.split(".")
-        self.assertEqual(len(version_parts), 3)
-        self.assertTrue(version_parts[0].isdigit())
-        self.assertTrue(version_parts[1].isdigit())
-
     def test_is_crawler(self):
         ua = (
             "Mozilla/5.0 (iPhone; CPU iPhone OS 7_1 like Mac OS X) AppleWebKit (KHTML, like Gecko) Mobile "
@@ -28,33 +20,25 @@ class CrawlerDetectTests(CrawlerDetectTestCase):
         self.assertTrue(res)
 
     def test_user_agents_are_bots(self):
-        with open(
-            os.path.join(os.path.dirname(__file__), "fixtures/user_agent/crawlers.txt"), "r"
-        ) as f:
+        with open(os.path.join(os.path.dirname(__file__), "fixtures/user_agent/crawlers.txt")) as f:
             for line in f:
                 test = self.cd.isCrawler(line)
                 self.assertTrue(test, line)
 
     def test_sec_ch_ua_are_bots(self):
-        with open(
-            os.path.join(os.path.dirname(__file__), "fixtures/sec_ch_ua/crawlers.txt"), "r"
-        ) as f:
+        with open(os.path.join(os.path.dirname(__file__), "fixtures/sec_ch_ua/crawlers.txt")) as f:
             for line in f:
                 test = self.cd.isCrawler(line)
                 self.assertTrue(test, line)
 
     def test_user_agents_are_devices(self):
-        with open(
-            os.path.join(os.path.dirname(__file__), "fixtures/user_agent/devices.txt"), "r"
-        ) as f:
+        with open(os.path.join(os.path.dirname(__file__), "fixtures/user_agent/devices.txt")) as f:
             for line in f:
                 test = self.cd.isCrawler(line)
                 self.assertFalse(test, line)
 
     def test_sec_ch_ua_are_devices(self):
-        with open(
-            os.path.join(os.path.dirname(__file__), "fixtures/sec_ch_ua/devices.txt"), "r"
-        ) as f:
+        with open(os.path.join(os.path.dirname(__file__), "fixtures/sec_ch_ua/devices.txt")) as f:
             for line in f:
                 test = self.cd.isCrawler(line)
                 self.assertFalse(test, line)
@@ -105,10 +89,6 @@ class CrawlerDetectTests(CrawlerDetectTestCase):
             for key2, compare in enumerate(crawlers.getAll()):
                 # Dont check this regex against itself
                 if key1 != key2:
-                    cleaned_compare = (
-                        compare.replace("\\n", "\n")
-                        .replace("\\r", "\n")
-                        .replace("\\", "")
-                    )
+                    cleaned_compare = compare.replace("\\n", "\n").replace("\\r", "\n").replace("\\", "")
                     result = re.search(regex, cleaned_compare, flags=re.IGNORECASE)
                     self.assertFalse(result)

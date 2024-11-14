@@ -1,26 +1,9 @@
-import configparser
-import os
 import re
 
-from .providers import Crawlers, Exclusions, Headers
+from crawlerdetect.providers import Crawlers, Exclusions, Headers
 
 
-def get_crawlerdetect_version():
-    config = configparser.ConfigParser()
-
-    current_directory = os.path.dirname(os.path.abspath(__file__))
-    grandparent_directory = os.path.abspath(os.path.join(current_directory, os.pardir, os.pardir))
-    config_file_path = os.path.join(grandparent_directory, "setup.cfg")
-
-    config.read(config_file_path)
-
-    return config["crawlerdetect"]["version"]
-
-
-version = get_crawlerdetect_version()
-
-
-class CrawlerDetect(object):
+class CrawlerDetect:
     def __init__(self, headers=None, user_agent=""):
         self.crawlers = Crawlers()
         self.exclusions = Exclusions()
@@ -32,10 +15,6 @@ class CrawlerDetect(object):
 
         self.setHttpHeaders(headers)
         self.setUserAgent(user_agent)
-
-    @property
-    def version(self):
-        return version
 
     def setHttpHeaders(self, http_headers):
         self.httpHeaders = {}

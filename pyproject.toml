@@ -1,0 +1,99 @@
+[tool.poetry]
+name = "crawlerdetect"
+version = "0.2.2"
+description = "CrawlerDetect is a Python library designed to identify bots, crawlers, and spiders by analyzing their user agents."
+authors = ["Vitalii Shishorin <moskrc@gmail.com>"]
+readme = "README.md"
+license = "MIT"
+maintainers = []
+homepage = "https://github.com/moskrc/crawlerdetect"
+repository = "https://github.com/moskrc/crawlerdetect"
+documentation = "https://github.com/moskrc/crawlerdetect"
+keywords = ["crawler",
+    "crawler detect",
+    "crawler detector",
+    "crawlerdetect",
+    "python crawler detect", ]
+
+[tool.poetry.dependencies]
+python = ">=3.9, <4"
+
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.7.3"
+pre-commit = "^4.0.1"
+bump-my-version = "^0.28.1"
+pytest = "^8.3.3"
+pytest-cov = "^6.0.0"
+
+[tool.mypy]
+strict = true
+exclude = ["venv", ".venv", ]
+
+[tool.ruff]
+line-length = 120
+
+
+[tool.ruff.lint]
+select = [
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "F", # pyflakes
+    "I", # isort
+    "B", # flake8-bugbear
+    "C4", # flake8-comprehensions
+    "N", # PEP8 naming
+    "UP", # pyupgrade
+    "ARG001", # unused arguments in functions
+]
+ignore = [
+    "E501", # line too long, handled by black
+    "B008", # do not perform function calls in argument defaults
+    "W191", # indentation contains tabs
+    "B904", # Allow raising exceptions without from e, for HTTPException
+    "N802", # function name should be lowercase
+    "N806", # variable in function should be lowercase
+]
+
+[tool.ruff.lint.pyupgrade]
+# Preserve types, even if a file imports `from __future__ import annotations`.
+keep-runtime-typing = true
+
+[tool.bumpversion]
+tag_name = "v{new_version}"
+tag_message = "Bump version: {current_version} → {new_version}"
+allow_dirty = false
+commit = true
+message = "Bump version: {current_version} → {new_version}"
+commit_args = ""
+current_version = "0.2.2"
+parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
+serialize = ["{major}.{minor}.{patch}"]
+search = "{current_version}"
+replace = "{new_version}"
+regex = false
+ignore_missing_version = false
+ignore_missing_files = false
+tag = false
+sign_tags = false
+setup_hooks = []
+pre_commit_hooks = []
+post_commit_hooks = []
+
+[[tool.bumpversion.files]]
+filename = "crawlerdetect/__init__.py"
+search = "__version__ = \"{current_version}\""
+replace = "__version__ = \"{new_version}\""
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = "version = \"{current_version}\""
+replace = "version = \"{new_version}\""
+
+
+[tool.poetry.scripts]
+crawlerdetect = 'crawlerdetect.cli:main'
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

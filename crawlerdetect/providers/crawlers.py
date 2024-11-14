@@ -1,7 +1,6 @@
-from .base import AbstractProvider
+from crawlerdetect.providers.base import AbstractProvider
 
 
-# noinspection SpellCheckingInspection
 class Crawlers(AbstractProvider):
     """
     List of regular expressions to match against the user agent
@@ -1419,5 +1418,5 @@ class Crawlers(AbstractProvider):
             r"ZoteroTranslationServer",
             r"ZyBorg",
             r"[a-z0-9\-_]*(bot|crawl|archiver|transcoder|spider|uptime|validator|fetcher|cron|checker|reader|extractor|monitoring|analyzer|scraper)",
-            r'MonSpark/',
+            r"MonSpark/",
         ]

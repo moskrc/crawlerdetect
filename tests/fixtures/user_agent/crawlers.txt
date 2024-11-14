@@ -3564,10 +3564,10 @@ Nuclei (@pdiscoveryio)
 myseosnapshot/1.0
 Contextual Code Sites Explorer
 Corax - support@coraxcyber.com
-Florienzh/1.0 
+Florienzh/1.0
 BKCTwitterUnshortener/0.1 (Contact: systems@cyber.harvard.edu)
-Syndirella/0.91pre 
-PodcastAddict/v2 - Dalvik/2.1.0 (Linux; U; Android 6.0.1; SM-G920F Build/MMB29K) 
+Syndirella/0.91pre
+PodcastAddict/v2 - Dalvik/2.1.0 (Linux; U; Android 6.0.1; SM-G920F Build/MMB29K)
 PodcastAddict/v5 (+https://podcastaddict.com/; Android podcast app)
 PDF24 URL To PDF
 MacOutlook/16.41.20091302 (Intelx64 Mac OS X 10.14.4 (Build 18E226))
