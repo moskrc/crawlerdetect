@@ -43,9 +43,8 @@ crawler_detect.getMatches()
 
 #### Get version of the library
 ```Python
-from crawlerdetect import CrawlerDetect
-crawler_detect = CrawlerDetect()
-crawler_detect.version
+import crawlerdetect
+crawlerdetect.__version__
 ```
 
 ### Contributing
