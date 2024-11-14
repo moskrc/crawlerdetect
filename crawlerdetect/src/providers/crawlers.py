@@ -1419,4 +1419,5 @@ class Crawlers(AbstractProvider):
             r"ZoteroTranslationServer",
             r"ZyBorg",
             r"[a-z0-9\-_]*(bot|crawl|archiver|transcoder|spider|uptime|validator|fetcher|cron|checker|reader|extractor|monitoring|analyzer|scraper)",
+            r'MonSpark/',
         ]
