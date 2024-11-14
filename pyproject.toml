@@ -24,6 +24,7 @@ ruff = "^0.7.3"
 pre-commit = "^4.0.1"
 bump-my-version = "^0.28.1"
 pytest = "^8.3.3"
+pytest-cov = "^6.0.0"
 
 [tool.mypy]
 strict = true
@@ -83,6 +84,9 @@ post_commit_hooks = []
 filename = "crawlerdetect/__init__.py"
 search = "__version__ = \"{current_version}\""
 replace = "__version__ = \"{new_version}\""
+
+[tool.poetry.scripts]
+crawlerdetect = 'crawlerdetect.cli:main'
 
 [build-system]
 requires = ["poetry-core"]
