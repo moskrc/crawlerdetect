@@ -62,11 +62,11 @@ keep-runtime-typing = true
 [tool.bumpversion]
 tag_name = "v{new_version}"
 tag_message = "Bump version: {current_version} → {new_version}"
-allow_dirty = true
-commit = false
+allow_dirty = false
+commit = true
 message = "Bump version: {current_version} → {new_version}"
 commit_args = ""
-current_version = "0.1.10"
+current_version = "0.2.1"
 parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
 serialize = ["{major}.{minor}.{patch}"]
 search = "{current_version}"
@@ -84,6 +84,12 @@ post_commit_hooks = []
 filename = "crawlerdetect/__init__.py"
 search = "__version__ = \"{current_version}\""
 replace = "__version__ = \"{new_version}\""
+
+[[tool.bumpversion.files]]
+filename = "pyproject.toml"
+search = "version = \"{current_version}\""
+replace = "version = \"{new_version}\""
+
 
 [tool.poetry.scripts]
 crawlerdetect = 'crawlerdetect.cli:main'
