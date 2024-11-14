@@ -48,9 +48,8 @@ crawlerdetect.__version__
 ```
 
 ### Contributing
-If you find a bot/spider/crawler user agent that CrawlerDetect fails to detect, please submit a pull request with the regex pattern added to the array in `providers/crawlers.py` and add the failing user agent to `tests/crawlers.txt`.
 
-Failing that, just create an issue with the user agent you have found, and we'll take it from there :)
+The patterns and testcases are synced from the PHP repo. If you find a bot/spider/crawler user agent that crawlerdetect fails to detect, please submit a pull request with the regex pattern and a testcase to the [upstream PHP repo](https://github.com/JayBizzle/Crawler-Detect).
 
 ### ES6 Library
 To use this library with NodeJS or any ES6 application based, check out [es6-crawler-detect](https://github.com/JefferyHus/es6-crawler-detect).
@@ -77,6 +76,11 @@ poetry install
 #### Running tests
 ```bash
 poetry run pytest
+```
+
+#### Update crawlers list and devices
+```bash
+./update_data.sh
 ```
 
 #### Bump version

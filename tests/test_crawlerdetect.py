@@ -4,7 +4,8 @@ import re
 
 from base_case import CrawlerDetectTestCase
 
-from crawlerdetect import CrawlerDetect, providers
+from crawlerdetect import CrawlerDetect
+from crawlerdetect.providers import crawlers
 
 with open(os.path.join(os.path.dirname(__file__), "fixtures/headers.json")) as f:
     test_headers = json.load(f)
@@ -80,13 +81,11 @@ class CrawlerDetectTests(CrawlerDetectTestCase):
         self.assertTrue(cd.isCrawler())
 
     def test_the_regex_patterns_are_unique(self):
-        crawlers = providers.crawlers.Crawlers()
-        self.assertEqual(len(crawlers.getAll()), len(set(crawlers.getAll())))
+        self.assertEqual(len(crawlers.data), len(set(crawlers.data)))
 
     def test_there_are_no_regex_collisions(self):
-        crawlers = providers.crawlers.Crawlers()
-        for key1, regex in enumerate(crawlers.getAll()):
-            for key2, compare in enumerate(crawlers.getAll()):
+        for key1, regex in enumerate(crawlers.data):
+            for key2, compare in enumerate(crawlers.data):
                 # Dont check this regex against itself
                 if key1 != key2:
                     cleaned_compare = compare.replace("\\n", "\n").replace("\\r", "\n").replace("\\", "")

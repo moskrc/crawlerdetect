@@ -1,16 +1,18 @@
 import re
 
-from crawlerdetect.providers import Crawlers, Exclusions, Headers
+from crawlerdetect.providers.crawlers import data as crawlers_data
+from crawlerdetect.providers.exclusions import data as exclusions_data
+from crawlerdetect.providers.headers import data as headers_data
 
 
 class CrawlerDetect:
     def __init__(self, headers=None, user_agent=""):
-        self.crawlers = Crawlers()
-        self.exclusions = Exclusions()
-        self.uaHttpHeaders = Headers()
+        self.crawlers = crawlers_data
+        self.exclusions = exclusions_data
+        self.uaHttpHeaders = headers_data
 
-        self.compiledRegex = self.compileRegex(self.crawlers.getAll())
-        self.compiledExclusions = self.compileRegex(self.exclusions.getAll())
+        self.compiledRegex = self.compileRegex(self.crawlers)
+        self.compiledExclusions = self.compileRegex(self.exclusions)
         self.matches = []
 
         self.setHttpHeaders(headers)
@@ -40,7 +42,7 @@ class CrawlerDetect:
         """
         All possible HTTP headers that represent user agents
         """
-        return self.uaHttpHeaders.getAll()
+        return self.uaHttpHeaders
 
     def compileRegex(self, patterns):
         """

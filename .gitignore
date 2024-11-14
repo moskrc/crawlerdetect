@@ -23,3 +23,4 @@ venv
 .venv/
 # pyenv
 .python-version
+pytest-report.xml
