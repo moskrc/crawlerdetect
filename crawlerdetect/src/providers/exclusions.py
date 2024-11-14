@@ -58,4 +58,6 @@ class Exclusions(AbstractProvider):
             r"OCTOPUS-CORE",
             r"htc_botdugls",
             r"super\/\d+\/Android\/\d+",
+            r'"Yandex"',
+            r"YandexModule2",
         ]

@@ -25,7 +25,15 @@ class CrawlerDetectTests(CrawlerDetectTestCase):
 
     def test_user_agents_are_bots(self):
         with open(
-            os.path.join(os.path.dirname(__file__), "fixtures/crawlers.txt"), "r"
+            os.path.join(os.path.dirname(__file__), "fixtures/user_agent/crawlers.txt"), "r"
+        ) as f:
+            for line in f:
+                test = self.cd.isCrawler(line)
+                self.assertTrue(test, line)
+
+    def test_sec_ch_ua_are_bots(self):
+        with open(
+            os.path.join(os.path.dirname(__file__), "fixtures/sec_ch_ua/crawlers.txt"), "r"
         ) as f:
             for line in f:
                 test = self.cd.isCrawler(line)
@@ -33,7 +41,15 @@ class CrawlerDetectTests(CrawlerDetectTestCase):
 
     def test_user_agents_are_devices(self):
         with open(
-            os.path.join(os.path.dirname(__file__), "fixtures/devices.txt"), "r"
+            os.path.join(os.path.dirname(__file__), "fixtures/user_agent/devices.txt"), "r"
+        ) as f:
+            for line in f:
+                test = self.cd.isCrawler(line)
+                self.assertFalse(test, line)
+
+    def test_sec_ch_ua_are_devices(self):
+        with open(
+            os.path.join(os.path.dirname(__file__), "fixtures/sec_ch_ua/devices.txt"), "r"
         ) as f:
             for line in f:
                 test = self.cd.isCrawler(line)

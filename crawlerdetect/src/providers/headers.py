@@ -22,4 +22,5 @@ class Headers(AbstractProvider):
             # Sometimes, bots (especially Google) use a genuine user agent, but fill this header in with their email address
             "HTTP_FROM",
             "HTTP_X_SCANNER",  # Seen in use by Netsparker
+            "HTTP_SEC_CH_UA",
         ]
