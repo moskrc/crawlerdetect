@@ -1,7 +1,7 @@
 ## About CrawlerDetect
 
 This is a Python wrapper for [CrawlerDetect](https://github.com/JayBizzle/Crawler-Detect) - the web crawler detection library
-It helps to detect  bots/crawlers/spiders via the user agent and other HTTP-headers. Currently able to detect > 1,000's of bots/spiders/crawlers.
+It helps to detect bots/crawlers/spiders via the user agent and other HTTP-headers. Currently able to detect > 1,000's of bots/spiders/crawlers.
 
 ### Installation
 Run `pip install crawlerdetect`

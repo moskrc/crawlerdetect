@@ -2,25 +2,29 @@ import json
 import os
 import re
 
-from crawlerdetect import CrawlerDetect
-from crawlerdetect import __main__ as main
-from crawlerdetect import providers
+from crawlerdetect import CrawlerDetect, get_crawlerdetect_version, providers
 
 from .base_case import CrawlerDetectTestCase
 
 
+with open(os.path.join(os.path.dirname(__file__), "fixtures/headers.json")) as f:
+    test_headers = json.load(f)
+
+
 class CrawlerDetectTests(CrawlerDetectTestCase):
     def test_get_crawlerdetect_version(self):
-        version = main.get_crawlerdetect_version()
+        version = get_crawlerdetect_version()
         version_parts = version.split(".")
         self.assertEqual(len(version_parts), 3)
         self.assertTrue(version_parts[0].isdigit())
         self.assertTrue(version_parts[1].isdigit())
 
     def test_is_crawler(self):
-        res = self.cd.isCrawler(
-            "Mozilla/5.0 (iPhone; CPU iPhone OS 7_1 like Mac OS X) AppleWebKit (KHTML, like Gecko) Mobile (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html)"
+        ua = (
+            "Mozilla/5.0 (iPhone; CPU iPhone OS 7_1 like Mac OS X) AppleWebKit (KHTML, like Gecko) Mobile "
+            "(compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html)"
         )
+        res = self.cd.isCrawler(ua)
         self.assertTrue(res)
 
     def test_user_agents_are_bots(self):
@@ -56,9 +60,11 @@ class CrawlerDetectTests(CrawlerDetectTestCase):
                 self.assertFalse(test, line)
 
     def test_it_returns_correct_matched_bot_name(self):
-        self.cd.isCrawler(
-            "Mozilla/5.0 (iPhone; CPU iPhone OS 7_1 like Mac OS X) AppleWebKit (KHTML, like Gecko) Mobile (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html)"
+        ua = (
+            "Mozilla/5.0 (iPhone; CPU iPhone OS 7_1 like Mac OS X) AppleWebKit (KHTML, like Gecko) "
+            "Mobile (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html)"
         )
+        self.cd.isCrawler(ua)
         matches = self.cd.getMatches()
         self.assertEqual(self.cd.getMatches(), "monitoring", matches)
 
@@ -72,23 +78,20 @@ class CrawlerDetectTests(CrawlerDetectTestCase):
         self.assertFalse(test)
 
     def test_current_visitor(self):
-        headers = json.loads(
-            '{"DOCUMENT_ROOT":"\/home\/test\/public_html","GATEWAY_INTERFACE":"CGI\/1.1","HTTP_ACCEPT":"*\/*","HTTP_ACCEPT_ENCODING":"gzip, deflate","HTTP_CACHE_CONTROL":"no-cache","HTTP_CONNECTION":"Keep-Alive","HTTP_FROM":"bingbot(at)microsoft.com","HTTP_HOST":"www.test.com","HTTP_PRAGMA":"no-cache","HTTP_USER_AGENT":"Mozilla\/5.0 (compatible; bingbot\/2.0; +http:\/\/www.bing.com\/bingbot.htm)","PATH":"\/bin:\/usr\/bin","QUERY_STRING":"order=closingDate","REDIRECT_STATUS":"200","REMOTE_ADDR":"127.0.0.1","REMOTE_PORT":"3360","REQUEST_METHOD":"GET","REQUEST_URI":"\/?test=testing","SCRIPT_FILENAME":"\/home\/test\/public_html\/index.php","SCRIPT_NAME":"\/index.php","SERVER_ADDR":"127.0.0.1","SERVER_ADMIN":"webmaster@test.com","SERVER_NAME":"www.test.com","SERVER_PORT":"80","SERVER_PROTOCOL":"HTTP\/1.1","SERVER_SIGNATURE":"","SERVER_SOFTWARE":"Apache","UNIQUE_ID":"Vx6MENRxerBUSDEQgFLAAAAAS","PHP_SELF":"\/index.php","REQUEST_TIME_FLOAT":1461619728.0705,"REQUEST_TIME":1461619728}'
-        )
+        headers = test_headers["test_current_visitor"]
         cd = CrawlerDetect(headers=headers)
         self.assertTrue(cd.isCrawler())
 
     def test_user_agent_passed_via_contructor(self):
-        cd = CrawlerDetect(
-            user_agent="Mozilla/5.0 (iPhone; CPU iPhone OS 7_1 like Mac OS X) AppleWebKit (KHTML, like Gecko) Mobile (compatible; Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html)"
+        ua = (
+            "Mozilla/5.0 (iPhone; CPU iPhone OS 7_1 like Mac OS X) AppleWebKit (KHTML, like Gecko) Mobile (compatible; "
+            "Yahoo Ad monitoring; https://help.yahoo.com/kb/yahoo-ad-monitoring-SLN24857.html)"
         )
+        cd = CrawlerDetect(user_agent=ua)
         self.assertTrue(cd.isCrawler())
 
     def test_http_from_header(self):
-        headers = json.loads(
-            '{"DOCUMENT_ROOT":"\/home\/test\/public_html","GATEWAY_INTERFACE":"CGI\/1.1","HTTP_ACCEPT":"*\/*","HTTP_ACCEPT_ENCODING":"gzip, deflate","HTTP_CACHE_CONTROL":"no-cache","HTTP_CONNECTION":"Keep-Alive","HTTP_FROM":"googlebot(at)googlebot.com","HTTP_HOST":"www.test.com","HTTP_PRAGMA":"no-cache","HTTP_USER_AGENT":"Mozilla\/5.0 (Macintosh; Intel Mac OS X 10_8_4) AppleWebKit\/537.36 (KHTML, like Gecko) Chrome\/28.0.1500.71 Safari\/537.36","PATH":"\/bin:\/usr\/bin","QUERY_STRING":"order=closingDate","REDIRECT_STATUS":"200","REMOTE_ADDR":"127.0.0.1","REMOTE_PORT":"3360","REQUEST_METHOD":"GET","REQUEST_URI":"\/?test=testing","SCRIPT_FILENAME":"\/home\/test\/public_html\/index.php","SCRIPT_NAME":"\/index.php","SERVER_ADDR":"127.0.0.1","SERVER_ADMIN":"webmaster@test.com","SERVER_NAME":"www.test.com","SERVER_PORT":"80","SERVER_PROTOCOL":"HTTP\/1.1","SERVER_SIGNATURE":"","SERVER_SOFTWARE":"Apache","UNIQUE_ID":"Vx6MENRxerBUSDEQgFLAAAAAS","PHP_SELF":"\/index.php","REQUEST_TIME_FLOAT":1461619728.0705,"REQUEST_TIME":1461619728}'
-        )
-        print(headers)
+        headers = test_headers["test_http_from_header"]
         cd = CrawlerDetect(headers=headers)
         self.assertTrue(cd.isCrawler())
 
