@@ -1,8 +1,6 @@
-"""
-CrawlerDetect is Python class for detecting bots/crawlers/spiders via the user agent.
-"""
+from crawlerdetect import providers
+from crawlerdetect.crawlerdetect import CrawlerDetect
 
-from .src import providers
-from .src.crawlerdetect import CrawlerDetect, get_crawlerdetect_version
+__all__ = ("CrawlerDetect", "providers", "__version__")
 
-__all__ = ("CrawlerDetect", "providers", "get_crawlerdetect_version")
+__version__ = "0.2.1"

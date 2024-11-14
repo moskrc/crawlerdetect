@@ -1,4 +1,4 @@
-from .base import AbstractProvider
+from crawlerdetect.providers.base import AbstractProvider
 
 
 class Exclusions(AbstractProvider):
