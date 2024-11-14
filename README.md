@@ -41,6 +41,13 @@ crawler_detect.getMatches()
 # Sosospider
 ```
 
+#### Get version of the library
+```Python
+from crawlerdetect import CrawlerDetect
+crawler_detect = CrawlerDetect()
+crawler_detect.version
+```
+
 ### Contributing
 If you find a bot/spider/crawler user agent that CrawlerDetect fails to detect, please submit a pull request with the regex pattern added to the array in `providers/crawlers.py` and add the failing user agent to `tests/crawlers.txt`.
 

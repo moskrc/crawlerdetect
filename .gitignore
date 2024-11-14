@@ -21,3 +21,5 @@ venv
 
 # Virtual env
 .venv/
+# pyenv
+.python-version
