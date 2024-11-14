@@ -92,7 +92,6 @@ class CrawlerDetectTests(CrawlerDetectTestCase):
 
     def test_http_from_header(self):
         headers = test_headers["test_http_from_header"]
-        print(headers)
         cd = CrawlerDetect(headers=headers)
         self.assertTrue(cd.isCrawler())
 
