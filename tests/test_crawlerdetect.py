@@ -2,9 +2,9 @@ import json
 import os
 import re
 
-from crawlerdetect import CrawlerDetect, providers
+from base_case import CrawlerDetectTestCase
 
-from .base_case import CrawlerDetectTestCase
+from crawlerdetect import CrawlerDetect, providers
 
 with open(os.path.join(os.path.dirname(__file__), "fixtures/headers.json")) as f:
     test_headers = json.load(f)
