@@ -77,32 +77,3 @@ $ ./update_data.sh
 ```bash
 $ poetry run bump-my-version bump [patch|minor|major]
 ```
-
----
-
-
-### Laravel Package
-If you would like to use this with Laravel, please see [Laravel-Crawler-Detect](https://github.com/JayBizzle/Laravel-Crawler-Detect)
-
-### Symfony Bundle
-To use this library with Symfony 2/3/4, check out the [CrawlerDetectBundle](https://github.com/nicolasmure/CrawlerDetectBundle).
-
-### YII2 Extension
-To use this library with the YII2 framework, check out [yii2-crawler-detect](https://github.com/AlikDex/yii2-crawler-detect).
-
-### ES6 Library
-To use this library with NodeJS or any ES6 application based, check out [es6-crawler-detect](https://github.com/JefferyHus/es6-crawler-detect).
-
-### JVM Library (written in Java)
-To use this library in a JVM project (including Java, Scala, Kotlin, etc.), check out [CrawlerDetect](https://github.com/nekosoftllc/crawler-detect).
-
-### .NET Library
-To use this library in a .net standard (including .net core) based project, check out [NetCrawlerDetect](https://github.com/gplumb/NetCrawlerDetect).
-
-### Ruby Gem
-To use this library with Ruby on Rails or any Ruby-based application, check out [crawler_detect](https://github.com/loadkpi/crawler_detect) gem.
-
-### Go Module
-To use this library with Go, check out the [crawlerdetect](https://github.com/x-way/crawlerdetect) module.
-
-_Parts of this class are based on the brilliant [MobileDetect](https://github.com/serbanghita/Mobile-Detect)_
