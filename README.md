@@ -1,3 +1,5 @@
+[![test](https://github.com/moskrc/crawlerdetect/actions/workflows/python-package.yml/badge.svg)](https://github.com/moskrc/crawlerdetect/actions/workflows/python-package.yml)
+
 # About CrawlerDetect
 
 This is a Python wrapper for [CrawlerDetect](https://github.com/JayBizzle/Crawler-Detect) a web crawler detection library. It helps identify
