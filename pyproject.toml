@@ -32,6 +32,14 @@ exclude = ["venv", ".venv", ]
 
 [tool.ruff]
 line-length = 120
+# don't format these files (they are auto-generated)
+exclude = [
+    "crawlerdetect/providers/crawlers.py",
+    "crawlerdetect/providers/excluduins.py",
+    "crawlerdetect/providers/headers.py",
+    "tests/fixtures/sec_ch_ua/*",
+    "tests/fixtures/user_agents/*",
+]
 
 
 [tool.ruff.lint]
