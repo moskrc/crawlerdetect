@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "crawlerdetect"
-version = "0.2.7"
+version = "0.3.0"
 description = "CrawlerDetect is a Python library designed to identify bots, crawlers, and spiders by analyzing their user agents."
 authors = ["Vitalii Shishorin <moskrc@gmail.com>"]
 readme = "README.md"
@@ -74,7 +74,7 @@ allow_dirty = false
 commit = true
 message = "Bump version: {current_version} → {new_version}"
 commit_args = ""
-current_version = "0.2.7"
+current_version = "0.3.0"
 parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
 serialize = ["{major}.{minor}.{patch}"]
 search = "{current_version}"
