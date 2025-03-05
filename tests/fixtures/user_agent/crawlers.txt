@@ -2416,6 +2416,7 @@ Mozilla/5.0 (compatible; Feedwind/3.0; +http://feed.mikle.com/support/descriptio
 Mozilla/5.0 (Macintosh; Intel Mac OS X 1068) AppleWebKit/534.50 (KHTML like Gecko) Version/5.1 Instapaper/4.0 (+http://www.instapaper.com/)
 Mozilla/5.0 (compatible; Keywords Research; http://www.check-domains.com/keyword-research/keywords-adwords.php)
 CAAM/0.1 (CAAM; caam dot crwlr at gmail dot com)
+Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0/5.0 ((Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0; caam dot crwlr at gmail dot com)
 i2kconnect/"1.7.0"
 resolver/0.1.12 (+http://github.com/andris9/resolver)
 DangDang
@@ -3676,3 +3677,7 @@ Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KH
 Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/MMB29P) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.6261.94 Mobile Safari/537.36 (compatible; GoogleOther)
 Mozilla/5.0 (compatible; YandexBot/3.0; +http://yandex.com/bots)
 Mozilla/5.0 (compatible; YandexImages/3.0; +http://yandex.com/bots)
+symbolicator/24.11.1
+symbolicator/24.12.1
+Barracuda Sentinel (EE)
+Mozilla/5.0(compatible;MatchorySearch/1.3;+https://www.matchory.com)
