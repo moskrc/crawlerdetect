@@ -13,10 +13,10 @@ class CrawlerDetect:
     def __init__(self, headers: Optional[Dict[str, str]] = None, user_agent: str = "") -> None:
         self.crawlers: List[str] = crawlers_data
         self.exclusions: List[str] = exclusions_data
-        self.uaHttpHeaders: List[str] = headers_data
+        self.user_agent_http_headers: List[str] = headers_data
 
         self.matches: List[str] = []
-        self.httpHeaders: Dict[str, str] = {}
+        self.http_headers: Dict[str, str] = {}
         self.user_agent: str = ""
         
         self._ensure_compiled_regexes()
@@ -24,10 +24,10 @@ class CrawlerDetect:
         self.set_user_agent(user_agent)
 
     def set_http_headers(self, http_headers: Optional[Dict[str, str]]) -> None:
-        self.httpHeaders = {}
+        self.http_headers = {}
         
         if http_headers:
-            self.httpHeaders = {
+            self.http_headers = {
                 k: v for k, v in http_headers.items() 
                 if k.startswith("HTTP_")
             }
@@ -35,9 +35,9 @@ class CrawlerDetect:
     def set_user_agent(self, user_agent: Optional[str] = None) -> None:
         if not user_agent:
             ua_parts = [
-                self.httpHeaders[header] 
+                self.http_headers[header] 
                 for header in self.get_ua_http_headers()
-                if header in self.httpHeaders
+                if header in self.http_headers
             ]
             self.user_agent = " ".join(ua_parts) + (" " if ua_parts else "")
         else:
@@ -47,7 +47,7 @@ class CrawlerDetect:
         """
         All possible HTTP headers that represent user agents
         """
-        return self.uaHttpHeaders
+        return self.user_agent_http_headers
 
     @classmethod
     def _ensure_compiled_regexes(cls) -> None:
