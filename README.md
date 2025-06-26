@@ -13,6 +13,12 @@ $ pip install crawlerdetect
 
 # How to use
 
+## Method Reference
+| camelCase | snake_case | Description                       |
+|-----------|------------|-----------------------------------|
+| `isCrawler()` | `is_crawler()` | Check if user agent is a crawler  |
+| `getMatches()` | `get_matches()` | Get the name of detected crawlers |
+
 ## Variant 1
 ```Python
 from crawlerdetect import CrawlerDetect
