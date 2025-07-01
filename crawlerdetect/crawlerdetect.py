@@ -37,19 +37,14 @@ class CrawlerDetect:
         self._cached_check = lru_cache(maxsize=self.CACHE_SIZE)(self._check_crawler)
 
     def set_http_headers(self, http_headers: Optional[Dict[str, str]]) -> None:
-        self.http_headers = {
-            k: v for k, v in (http_headers or {}).items()
-            if k.startswith("HTTP_")
-        }
+        self.http_headers = {k: v for k, v in (http_headers or {}).items() if k.startswith("HTTP_")}
 
     def set_user_agent(self, user_agent: Optional[str] = None) -> None:
         if user_agent:
             self.user_agent = user_agent
         else:
             ua_parts = [
-                self.http_headers[header]
-                for header in self.get_ua_http_headers()
-                if header in self.http_headers
+                self.http_headers[header] for header in self.get_ua_http_headers() if header in self.http_headers
             ]
             self.user_agent = " ".join(ua_parts) + (" " if ua_parts else "")
 
