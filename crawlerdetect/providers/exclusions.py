@@ -3,7 +3,7 @@ data = [
     r"Firefox.[\d\.]*",
     r" Chrome.[\d\.]*",
     r"Chromium.[\d\.]*",
-    r"MSIE.[\d\.]",
+    r"MSIE.[\d\.]*",
     r"Opera\/[\d\.]*",
     r"Mozilla.[\d\.]*",
     r"AppleWebKit.[\d\.]*",
