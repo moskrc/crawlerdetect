@@ -3,4 +3,4 @@ from crawlerdetect.crawlerdetect import CrawlerDetect
 
 __all__ = ("CrawlerDetect", "providers", "__version__")
 
-__version__ = "0.3.2"
+__version__ = "0.3.3"
