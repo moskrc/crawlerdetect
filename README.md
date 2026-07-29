@@ -66,14 +66,16 @@ Failing that, just create an issue with the user agent you have found, and we'll
 
 # Development
 
+This project uses [uv](https://docs.astral.sh/uv/) for dependency management and packaging.
+
 ## Setup
 ```bash
-$ poetry install
+$ uv sync
 ```
 
 ## Running tests
 ```bash
-$ poetry run pytest
+$ uv run pytest
 ```
 
 ## Update crawlers from upstream PHP repo
@@ -83,5 +85,5 @@ $ ./update_data.sh
 
 ## Bump version
 ```bash
-$ poetry run bump-my-version bump [patch|minor|major]
+$ uv run bump-my-version bump [patch|minor|major]
 ```
