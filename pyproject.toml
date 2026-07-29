@@ -102,6 +102,14 @@ filename = "pyproject.toml"
 search = "version = \"{current_version}\""
 replace = "version = \"{new_version}\""
 
+[tool.hatch.build.targets.sdist]
+include = [
+    "/crawlerdetect",
+    "/tests",
+    "/README.md",
+    "/LICENSE",
+]
+
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
