@@ -109,16 +109,6 @@ Preview the change first with `--dry-run -v` (nothing is written or committed):
 $ uv run bump-my-version bump --dry-run -v patch
 ```
 
-`bump-my-version bump` on its own (no part, no `--new-version`) fails with `Unable to get the next version.` - one of the two is required.
-
-You may also see a harmless warning:
-```
-Specified version (0.3.3) does not match last tagged version (0.3.2)
-```
-This just means the version in `pyproject.toml` and the latest `vX.Y.Z` git tag are out of sync (e.g. after a manual version edit) - bump-my-version still uses `pyproject.toml` as the source of truth and bumps correctly regardless.
-
-`bump-my-version` doesn't know about `uv.lock` by default, which used to leave the project's own version there stale and break CI's `uv sync --locked`. A `pre_commit_hooks` entry in `pyproject.toml` (`uv lock`, `git add uv.lock`) now refreshes and stages it automatically, so it's included in the same bump commit — no manual step needed.
-
 Once bumped, push the commit and tag, then [publish to PyPI](#how-to-publish-a-new-release-to-pypi):
 ```bash
 $ git push && git push --tags
