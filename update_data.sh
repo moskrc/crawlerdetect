@@ -61,6 +61,7 @@ echo "Updating tests/data/sec_ch_ua/devices.txt"
 curl --progress-bar -o tests/fixtures/sec_ch_ua/devices.txt "https://raw.githubusercontent.com/${REPO}/${VERSION}/tests/data/sec_ch_ua/devices.txt"
 
 echo "Updating README upstream version"
-sed_inplace -E "s#^> Currently synced with .*#> Currently synced with [${REPO} \`${VERSION}\`](https://github.com/${REPO}/releases/tag/${VERSION}).#" README.md
+PATTERN_COUNT=$(grep -c '^    r"' crawlerdetect/providers/crawlers.py)
+sed_inplace -E "s#^> Currently synced with .*#> Currently synced with [${REPO} \`${VERSION}\`](https://github.com/${REPO}/releases/tag/${VERSION}) — ${PATTERN_COUNT} crawler patterns.#" README.md
 
 echo "Updating completed (upstream release ${VERSION})"

@@ -89,7 +89,7 @@ ignore_missing_files = false
 tag = true
 sign_tags = false
 setup_hooks = []
-pre_commit_hooks = []
+pre_commit_hooks = ["uv lock", "git add uv.lock"]
 post_commit_hooks = []
 
 [[tool.bumpversion.files]]
