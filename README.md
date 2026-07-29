@@ -6,6 +6,8 @@ This is a Python wrapper for [CrawlerDetect](https://github.com/JayBizzle/Crawle
 bots, crawlers, and spiders using the user agent and other HTTP headers. Currently, it can detect
 over 3,678 bots, spiders, and crawlers.
 
+> Currently synced with [JayBizzle/Crawler-Detect `v1.4.1`](https://github.com/JayBizzle/Crawler-Detect/releases/tag/v1.4.1).
+
 # How to install
 ```bash
 $ pip install crawlerdetect
@@ -66,14 +68,16 @@ Failing that, just create an issue with the user agent you have found, and we'll
 
 # Development
 
+This project uses [uv](https://docs.astral.sh/uv/) for dependency management and packaging.
+
 ## Setup
 ```bash
-$ poetry install
+$ uv sync
 ```
 
 ## Running tests
 ```bash
-$ poetry run pytest
+$ uv run pytest
 ```
 
 ## Update crawlers from upstream PHP repo
@@ -83,5 +87,5 @@ $ ./update_data.sh
 
 ## Bump version
 ```bash
-$ poetry run bump-my-version bump [patch|minor|major]
+$ uv run bump-my-version bump [patch|minor|major]
 ```

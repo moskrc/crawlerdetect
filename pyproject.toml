@@ -1,30 +1,34 @@
-[tool.poetry]
+[project]
 name = "crawlerdetect"
 version = "0.3.3"
 description = "CrawlerDetect is a Python library designed to identify bots, crawlers, and spiders by analyzing their user agents."
-authors = ["Vitalii Shishorin <moskrc@gmail.com>"]
+authors = [{ name = "Vitalii Shishorin", email = "moskrc@gmail.com" }]
 readme = "README.md"
 license = "MIT"
-maintainers = []
-homepage = "https://github.com/moskrc/crawlerdetect"
-repository = "https://github.com/moskrc/crawlerdetect"
-documentation = "https://github.com/moskrc/crawlerdetect"
+requires-python = ">=3.9, <4"
 keywords = ["crawler",
     "crawler detect",
     "crawler detector",
     "crawlerdetect",
     "python crawler detect", ]
+dependencies = []
 
-[tool.poetry.dependencies]
-python = ">=3.9, <4"
+[project.urls]
+Homepage = "https://github.com/moskrc/crawlerdetect"
+Repository = "https://github.com/moskrc/crawlerdetect"
+Documentation = "https://github.com/moskrc/crawlerdetect"
 
+[project.scripts]
+crawlerdetect = "crawlerdetect.cli:main"
 
-[tool.poetry.group.dev.dependencies]
-ruff = "^0.7.3"
-pre-commit = "^4.0.1"
-bump-my-version = "^0.28.1"
-pytest = "^8.3.3"
-pytest-cov = "^6.0.0"
+[dependency-groups]
+dev = [
+    "ruff>=0.7.3,<0.8",
+    "pre-commit>=4.0.1,<5",
+    "bump-my-version>=0.28.1,<0.29",
+    "pytest>=8.3.3,<9",
+    "pytest-cov>=6.0.0,<7",
+]
 
 [tool.mypy]
 strict = true
@@ -98,10 +102,14 @@ filename = "pyproject.toml"
 search = "version = \"{current_version}\""
 replace = "version = \"{new_version}\""
 
-
-[tool.poetry.scripts]
-crawlerdetect = 'crawlerdetect.cli:main'
+[tool.hatch.build.targets.sdist]
+include = [
+    "/crawlerdetect",
+    "/tests",
+    "/README.md",
+    "/LICENSE",
+]
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
