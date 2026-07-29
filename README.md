@@ -6,6 +6,8 @@ This is a Python wrapper for [CrawlerDetect](https://github.com/JayBizzle/Crawle
 bots, crawlers, and spiders using the user agent and other HTTP headers. Currently, it can detect
 over 3,678 bots, spiders, and crawlers.
 
+> Currently synced with [JayBizzle/Crawler-Detect `v1.4.1`](https://github.com/JayBizzle/Crawler-Detect/releases/tag/v1.4.1).
+
 # How to install
 ```bash
 $ pip install crawlerdetect
