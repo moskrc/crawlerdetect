@@ -86,6 +86,49 @@ $ ./update_data.sh
 ```
 
 ## Bump version
+Bumping updates the version in `pyproject.toml` and `crawlerdetect/__init__.py`, commits the change, and creates a matching `vX.Y.Z` git tag.
+
+Pass the part to increment:
 ```bash
-$ uv run bump-my-version bump [patch|minor|major]
+# 0.4.1 -> 0.4.2
+$ uv run bump-my-version bump patch
+
+# 0.4.1 -> 0.5.0
+$ uv run bump-my-version bump minor
+
+# 0.4.1 -> 1.0.0
+$ uv run bump-my-version bump major
+```
+
+Or set an explicit version instead of incrementing a part:
+```bash
+$ uv run bump-my-version bump --new-version 0.4.1
+```
+
+Preview the change first with `--dry-run -v` (nothing is written or committed):
+```bash
+$ uv run bump-my-version bump --dry-run -v patch
+```
+
+`bump-my-version bump` on its own (no part, no `--new-version`) fails with `Unable to get the next version.` — one of the two is required.
+
+You may also see a harmless warning:
+```
+Specified version (0.3.3) does not match last tagged version (0.3.2)
+```
+This just means the version in `pyproject.toml` and the latest `vX.Y.Z` git tag are out of sync (e.g. after a manual version edit) — bump-my-version still uses `pyproject.toml` as the source of truth and bumps correctly regardless.
+
+Once bumped, push the commit and tag, then [publish to PyPI](#how-to-publish-a-new-release-to-pypi):
+```bash
+$ git push && git push --tags
+```
+
+## How to publish a new release to PyPI
+```bash
+$ uv build
+$ uv publish
+```
+`uv publish` needs a PyPI token, provided via `UV_PUBLISH_TOKEN` (or `--token`):
+```bash
+$ UV_PUBLISH_TOKEN=pypi-... uv publish
 ```
