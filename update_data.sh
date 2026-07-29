@@ -45,7 +45,6 @@ echo "Updating headers"
 datafile "https://raw.githubusercontent.com/${REPO}/${VERSION}/raw/Headers.txt" "crawlerdetect/providers/headers.py"
 
 echo "Patching files"
-#sed_inplace -e 's/`Yandex(?!Search)`/`Yandex`/' crawlerdetect/providers/crawlers.py
 sed_inplace -e 's/r""\([^"]*\)""/r"\\\"\1\\\""/' crawlerdetect/providers/exclusions.py
 
 echo "Updating tests/data/user_agent/crawlers.txt"
@@ -62,6 +61,6 @@ curl --progress-bar -o tests/fixtures/sec_ch_ua/devices.txt "https://raw.githubu
 
 echo "Updating README upstream version"
 PATTERN_COUNT=$(grep -c '^    r"' crawlerdetect/providers/crawlers.py)
-sed_inplace -E "s#^> Currently synced with .*#> Currently synced with [${REPO} \`${VERSION}\`](https://github.com/${REPO}/releases/tag/${VERSION}) — ${PATTERN_COUNT} crawler patterns.#" README.md
+sed_inplace -E "s#^> Currently synced with .*#> Currently synced with [${REPO} \`${VERSION}\`](https://github.com/${REPO}/releases/tag/${VERSION}) - ${PATTERN_COUNT} crawler patterns.#" README.md
 
 echo "Updating completed (upstream release ${VERSION})"

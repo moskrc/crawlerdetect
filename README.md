@@ -5,7 +5,7 @@
 This is a Python wrapper for [CrawlerDetect](https://github.com/JayBizzle/Crawler-Detect) a web crawler detection library. It helps identify
 bots, crawlers, and spiders using the user agent and other HTTP headers.
 
-> Currently synced with [JayBizzle/Crawler-Detect `v1.4.1`](https://github.com/JayBizzle/Crawler-Detect/releases/tag/v1.4.1) — 1462 crawler patterns.
+> Currently synced with [JayBizzle/Crawler-Detect `v1.4.1`](https://github.com/JayBizzle/Crawler-Detect/releases/tag/v1.4.1) - 1462 crawler patterns.
 
 # How to install
 ```bash
